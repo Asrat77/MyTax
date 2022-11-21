@@ -8,7 +8,7 @@ package com.mycompany.mytax.ui;
  *
  * @author asrat
  */
-public class customTaxInternalFrame extends javax.swing.JFrame {
+public class customTaxInternalFrame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form customTaxInternalFrame
