@@ -4,11 +4,13 @@
  */
 package com.mycompany.mytax;
 
+import java.io.Serializable;
+
 /**
  *
  * @author asrat
  */
-public class Tax {
+public class Tax implements Serializable{
     private String name;
     private float rate;
     private float basePrincipal;
@@ -26,6 +28,16 @@ public class Tax {
             this.rate = rate;
         }else {
             String error = String.format("The base principal is invalid.");
+            throw new IllegalArgumentException(error);
+        }
+        this.name = name;
+    }
+
+    public Tax(String name, float rate) {
+        if (Checker.validatePositive(rate)){
+            this.rate = rate;
+        } else {
+            String error = String.format("The rate is invalid.");
             throw new IllegalArgumentException(error);
         }
         this.name = name;
