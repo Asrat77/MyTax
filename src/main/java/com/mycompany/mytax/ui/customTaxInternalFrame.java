@@ -33,7 +33,9 @@ public class customTaxInternalFrame extends javax.swing.JInternalFrame {
         label3 = new java.awt.Label();
         textField3 = new java.awt.TextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
 
         label1.setText("nameLabel");
 
