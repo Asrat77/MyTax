@@ -37,10 +37,12 @@ public class MainFrame extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jFrame2 = new javax.swing.JFrame();
         jFrame3 = new javax.swing.JFrame();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         customTax = new javax.swing.JMenu();
         customTaxMenuItem = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -84,6 +86,17 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 252, Short.MAX_VALUE)
+        );
+
         customTax.setText("Setup");
         customTax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +115,15 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar2.add(customTax);
 
         jMenu5.setText("Calcualte Tax");
+
+        jMenuItem4.setText("Calculate");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem4);
+
         jMenuBar2.add(jMenu5);
 
         jMenu6.setText("History");
@@ -113,25 +135,32 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void customTaxMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customTaxMenuItemActionPerformed
-        // TODO add your handling code here:
+        JInternalFrame frame = new customTaxInternalFrame();
+        frame.setVisible(true);
+        this.jDesktopPane1.add(frame);
     }//GEN-LAST:event_customTaxMenuItemActionPerformed
 
     private void customTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customTaxActionPerformed
-        JInternalFrame frame = new customTaxInternalFrame();
-        frame.setVisible(true);
-        this.jDesktopPanel.add(frame);
+        
     }//GEN-LAST:event_customTaxActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        JInternalFrame frame = new calcTaxInternalFrame();
+        frame.setVisible(true);
+        this.jDesktopPane1.add(frame);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,15 +192,16 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                MainFrame mainFrame = new MainFrame();
+                mainFrame.setVisible(true);
+                mainFrame.setExtendedState(mainFrame.getExtendedState() | javax.swing.JFrame.MAXIMIZED_BOTH);
             }
         });
     }
-    private javax.swing.JDesktopPane jDesktopPanel;
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu customTax;
     private javax.swing.JMenuItem customTaxMenuItem;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;
@@ -181,6 +211,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;

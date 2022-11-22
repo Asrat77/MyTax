@@ -8,7 +8,7 @@ package com.mycompany.mytax.ui;
  *
  * @author asrat
  */
-public class customTaxInternalFrame extends javax.swing.JFrame {
+public class customTaxInternalFrame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form customTaxInternalFrame
@@ -33,7 +33,9 @@ public class customTaxInternalFrame extends javax.swing.JFrame {
         label3 = new java.awt.Label();
         textField3 = new java.awt.TextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
 
         label1.setText("nameLabel");
 
