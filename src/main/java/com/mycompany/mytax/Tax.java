@@ -30,6 +30,10 @@ public class Tax {
         }
         this.name = name;
     }
+
+    public Tax(String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
     
