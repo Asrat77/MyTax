@@ -7,6 +7,8 @@ package com.mycompany.mytax.ui;
 import com.mycompany.mytax.Tax;
 import com.mytax.services.TaxService;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -70,6 +72,11 @@ public class customTaxInternalFrame extends javax.swing.JInternalFrame {
         });
 
         createButton.setLabel("Create");
+        createButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createButtonMouseClicked(evt);
+            }
+        });
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createButtonActionPerformed(evt);
@@ -140,14 +147,29 @@ public class customTaxInternalFrame extends javax.swing.JInternalFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
         TaxService service = new TaxService();
-        Tax tax = new Tax(nameField.getText(), rateField.getText());
+        Tax tax = new Tax(nameField.getText(), Float.parseFloat(rateField.getText()));
         System.out.println("Im here");
+        
         try {
-                service.save(tax);
-            } catch (IOException ex) {
-            }
+            service.save(tax);
+        } catch (IOException ex) {
+            Logger.getLogger(customTaxInternalFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
             
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void createButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createButtonMouseClicked
+        // TODO add your handling code here:
+//        TaxService service = new TaxService();
+//        Tax tax = new Tax(nameField.getText(), rateField.getText());
+//        System.out.println("Im here");
+//        try {
+//                service.save(tax);
+//            } catch (IOException ex) {
+//            }
+//        
+    }//GEN-LAST:event_createButtonMouseClicked
 
     /**
      * @param args the command line arguments
