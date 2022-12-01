@@ -76,6 +76,9 @@ public class Tax implements Serializable{
         }
     }
 //public setName
-
+    @Override
+    public String toString(){
+        return name;
+    }
 
 }
