@@ -9,6 +9,7 @@ import com.mycompany.mytax.Tax;
 import com.mytax.services.TaxService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -134,6 +135,15 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
 
     private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
         // TODO add your handling code here:
+        
+        if(priceField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please fill in all the required fields!");
+
+        }
+        
+        
+        
+        
         CalcTax calcTax = new CalcTax();
         float result = calcTax.calculateTax((Float) rateComboBox.getSelectedItem(), Float.parseFloat(priceField.getText()));
         showResultLabel.setText(Float.toString(result));

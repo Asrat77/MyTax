@@ -12,9 +12,6 @@ import java.lang.reflect.Method;
  */
 public class Checker {
     
-    public static void validateStrType(String s){
-        //
-    }
     
     
     public static boolean validatePositive(float value) {

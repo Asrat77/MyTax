@@ -59,7 +59,7 @@ public class CalcTax extends Tax implements Serializable {
         
     public float calculateTax(float rate, float amount){
         this.result = amount*rate;
-        return this.result;
+        return this.result/100;
     }
      
 

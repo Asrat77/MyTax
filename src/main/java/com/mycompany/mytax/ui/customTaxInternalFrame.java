@@ -9,6 +9,7 @@ import com.mytax.services.TaxService;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,6 +47,11 @@ public class customTaxInternalFrame extends javax.swing.JInternalFrame {
         setIconifiable(true);
 
         label1.setText("Name:");
+        label1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                label1FocusGained(evt);
+            }
+        });
 
         nameField.setText("");
         nameField.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +153,34 @@ public class customTaxInternalFrame extends javax.swing.JInternalFrame {
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
+        
+        
+        if(nameField.getText().equals("") ||
+           rateField.getText().equals("") ||
+           baseField.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Please fill in all the required fields!");
+        }
+        else {
+            TaxService service = new TaxService();
+        Tax tax = new Tax(nameField.getText(), Float.parseFloat(rateField.getText()));
+        System.out.println("Im here");
+        
+        try {
+            service.save(tax);
+            
+        } catch (IOException ex) {
+            System.out.println("Something went wrong.");
+        }
+        nameField.setText("");
+        rateField.setText("");
+        baseField.setText("");
+
+        }
+                
+                
+        
+        
+        
         TaxService service = new TaxService();
         Tax tax = new Tax(nameField.getText(), Float.parseFloat(rateField.getText()));
         System.out.println("Im here");
@@ -176,6 +210,10 @@ public class customTaxInternalFrame extends javax.swing.JInternalFrame {
 //            }
 //        
     }//GEN-LAST:event_createButtonMouseClicked
+
+    private void label1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_label1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_label1FocusGained
 
     /**
      * @param args the command line arguments
