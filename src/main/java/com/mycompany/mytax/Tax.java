@@ -25,7 +25,7 @@ public class Tax implements Serializable{
             throw new IllegalArgumentException(error);
         }
         if (Checker.validatePositive(basePrincipal)){
-            this.rate = rate;
+            this.basePrincipal = basePrincipal;
         }else {
             String error = String.format("The base principal is invalid.");
             throw new IllegalArgumentException(error);

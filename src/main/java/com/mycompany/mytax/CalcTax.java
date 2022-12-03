@@ -22,16 +22,16 @@ public class CalcTax extends Tax implements Serializable {
         
         public CalcTax(float amount, float result, float rate, String name, Tax tax){
             super(name,rate);
-            if (Checker.validatePositive(rate)){
+            if (Checker.validatePositive(amount)){
                 this.amount = amount;
             }else {
-                String error = String.format("The rate is invalid.");
+                String error = String.format("The amount is invalid.");
                 throw new IllegalArgumentException(error);
             }
-            if (Checker.validatePositive(rate)){
+            if (Checker.validatePositive(result)){
                 this.result = result;
             }else {
-                String error = String.format("The rate is invalid.");
+                String error = String.format("The  is invalid.");
                 throw new IllegalArgumentException(error);
                 }   
             this.tax = tax;
