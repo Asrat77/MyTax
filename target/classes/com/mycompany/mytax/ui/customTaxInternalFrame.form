@@ -87,6 +87,9 @@
           <Connection code="&quot;Name:&quot;" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="label1FocusGained"/>
+      </Events>
     </Component>
     <Component class="java.awt.TextField" name="nameField">
       <Properties>
