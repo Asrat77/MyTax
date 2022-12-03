@@ -4,6 +4,7 @@
  */
 package com.mycompany.mytax.ui;
 
+import com.mycompany.mytax.CalcTax;
 import com.mycompany.mytax.Tax;
 import com.mytax.services.TaxService;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
         
         for(Tax tax: taxLists){
             taxComboList.addItem(tax.getName());
+            rateComboBox.addItem(tax.getRate());
         }
         
     }
@@ -48,6 +50,9 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
         resultLabel = new java.awt.Label();
         showResultLabel = new java.awt.Label();
         taxComboList = new javax.swing.JComboBox<>();
+        rateComboBox = new javax.swing.JComboBox<>();
+
+        setClosable(true);
 
         amountLabel.setText("Amount:");
 
@@ -61,6 +66,11 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
         });
 
         calculateButton.setLabel("Calculate");
+        calculateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateButtonActionPerformed(evt);
+            }
+        });
 
         resultLabel.setText("Result:");
 
@@ -82,11 +92,13 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(priceField, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                             .addComponent(showResultLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(taxComboList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(taxComboList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(rateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(calculateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +113,9 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(taxComboList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(taxComboList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(showResultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,6 +131,14 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
     private void priceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_priceFieldActionPerformed
+
+    private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
+        // TODO add your handling code here:
+        CalcTax calcTax = new CalcTax();
+        float result = calcTax.calculateTax((Float) rateComboBox.getSelectedItem(), Float.parseFloat(priceField.getText()));
+        showResultLabel.setText(Float.toString(result));
+        System.out.println((Float) rateComboBox.getSelectedItem() + " " + Float.parseFloat(priceField.getText()));
+    }//GEN-LAST:event_calculateButtonActionPerformed
 
         /**
      * @param args the command line arguments
@@ -158,6 +180,7 @@ public class calcTaxInternalFrame extends javax.swing.JInternalFrame {
     private java.awt.Button calculateButton;
     private java.awt.Label label2;
     private java.awt.TextField priceField;
+    private javax.swing.JComboBox<Float> rateComboBox;
     private java.awt.Label resultLabel;
     private java.awt.Label showResultLabel;
     private javax.swing.JComboBox<String> taxComboList;

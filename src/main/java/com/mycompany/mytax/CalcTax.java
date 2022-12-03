@@ -28,12 +28,6 @@ public class CalcTax extends Tax implements Serializable {
                 String error = String.format("The amount is invalid.");
                 throw new IllegalArgumentException(error);
             }
-            if (Checker.validatePositive(result)){
-                this.result = result;
-            }else {
-                String error = String.format("The  is invalid.");
-                throw new IllegalArgumentException(error);
-                }   
             this.tax = tax;
         
         }
@@ -63,9 +57,9 @@ public class CalcTax extends Tax implements Serializable {
         this.tax = tax;
     }
         
-    public float calculateTax(float rate, float amount, float result){
-        result = amount*getRate();
-        return result;
+    public float calculateTax(float rate, float amount){
+        this.result = amount*rate;
+        return this.result;
     }
      
 
